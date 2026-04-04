@@ -1,6 +1,6 @@
 [project]
 name = "alphasignpy"
-version = "0.1.0"
+version = "0.1.1"
 authors = [
     { name = "Lance Reinsmith" },
     { name = "prototux (original author)", email = "jason@prototux.net" },
@@ -36,14 +36,14 @@ dev = [
     "pytest-cov>=7.1.0",
     "ruff>=0.15.9",
     "ty>=0.0.28",
-    "rumdl>=0.1.66",
+    "rumdl>=0.1.67",
     { include-group = "docs" },
 ]
 
 [project.urls]
-Homepage = "https://github.com/lancereinsmith/python-alphasign"
-Documentation = "https://github.com/lancereinsmith/python-alphasign"
-"Bug Tracker" = "https://github.com/lancereinsmith/python-alphasign/issues"
+Homepage = "https://github.com/lancereinsmith/alphasignpy"
+Documentation = "https://lancereinsmith.github.io/alphasignpy/"
+"Bug Tracker" = "https://github.com/lancereinsmith/alphasignpy/issues"
 
 # ---------------------------------------------------------------------------
 # Build
