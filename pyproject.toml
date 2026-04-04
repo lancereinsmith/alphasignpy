@@ -1,0 +1,130 @@
+[project]
+name = "alphasignpy"
+version = "0.1.0"
+authors = [
+    { name = "Lance Reinsmith" },
+    { name = "prototux (original author)", email = "jason@prototux.net" },
+]
+description = "Comprehensive Python implementation of the Alpha Sign Communications Protocol for LED signs"
+keywords = ["alphasign", "betabrite", "LED sign", "alpha protocol", "adaptive displays", "serial"]
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Hardware",
+]
+dependencies = [
+    "Pillow>=12.2.0",
+    "pyserial>=3.5",
+]
+
+[dependency-groups]
+docs = [
+    "zensical>=0.0.31",
+]
+dev = [
+    "pytest>=9.0.2",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.15.9",
+    "ty>=0.0.28",
+    "rumdl>=0.1.66",
+    { include-group = "docs" },
+]
+
+[project.urls]
+Homepage = "https://github.com/lancereinsmith/python-alphasign"
+Documentation = "https://github.com/lancereinsmith/python-alphasign"
+"Bug Tracker" = "https://github.com/lancereinsmith/python-alphasign/issues"
+
+# ---------------------------------------------------------------------------
+# Build
+# ---------------------------------------------------------------------------
+
+[build-system]
+requires = ["setuptools>=75.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["alphasign*"]
+exclude = ["tests*", "dev*", "docs*"]
+
+# ---------------------------------------------------------------------------
+# Ruff — linter + formatter (replaces flake8, isort, black)
+# ---------------------------------------------------------------------------
+
+[tool.ruff]
+target-version = "py310"
+line-length = 99
+src = ["alphasign", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "N",   # pep8-naming
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+    "RUF", # ruff-specific
+]
+ignore = [
+    "E501",   # line too long (handled by formatter)
+    "B008",   # function calls in default args
+    "SIM117", # combine nested with-statements (readability preference)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"examples/*" = ["N", "E722"]  # naming & bare-except OK in examples
+
+[tool.ruff.lint.isort]
+known-first-party = ["alphasign"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+# ---------------------------------------------------------------------------
+# ty — type checker (from Astral, replaces mypy)
+# ---------------------------------------------------------------------------
+
+[tool.ty.src]
+exclude = ["examples/"]
+
+[tool.ty.environment]
+python-version = "3.10"
+
+# ---------------------------------------------------------------------------
+# pytest
+# ---------------------------------------------------------------------------
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.coverage.run]
+source = ["alphasign"]
+omit = ["tests/*"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+
+# ---------------------------------------------------------------------------
+# rumdl — Markdown linter
+# ---------------------------------------------------------------------------
+
+[tool.rumdl.MD013]
+line_length = 120
