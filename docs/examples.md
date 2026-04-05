@@ -8,7 +8,7 @@ Working examples are in the
 [`examples/`][ex] directory.
 Each one is a self-contained script you can run directly.
 
-[ex]: https://github.com/lancereinsmith/python-alphasign/tree/main/examples
+[ex]: https://github.com/lancereinsmith/alphasignpy/tree/main/examples
 
 All examples assume a sign connected via USB serial at
 `/dev/ttyUSB0`.
