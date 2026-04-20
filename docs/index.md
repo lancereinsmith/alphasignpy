@@ -71,8 +71,8 @@ pip install alphasignpy
 Or from source:
 
 ```bash
-git clone https://github.com/lancereinsmith/python-alphasign.git
-cd python-alphasign
+git clone https://github.com/lancereinsmith/alphasignpy.git
+cd alphasignpy
 pip install -e ".[dev]"
 ```
 
